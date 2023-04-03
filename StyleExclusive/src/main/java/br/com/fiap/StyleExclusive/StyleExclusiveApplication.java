@@ -18,8 +18,7 @@ public class StyleExclusiveApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Long idProduto = null;
-		this.produtoService.save("blusa azul de marca", "blusa", "uma blusa bem bonita", 69.99F, idProduto);
+		this.produtoService.save("blusa azul de marca", "blusa", "uma blusa bem bonita", 69.99F);
 	}
 
 }
