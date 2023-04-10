@@ -16,11 +16,6 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        produtoRepository.saveAll(List.of(
-                new Produto("Blusa Azul", "blusa", 69.99F, "uma blusa bem bonita"),
-                new Produto("Calça Vermelho", "calça", 70F, "uma calça bem legal"),
-                new Produto("Shorts", "shorts", 99.99F, "um shorts")
-        ));
     }
 
 }

@@ -32,7 +32,7 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(produto);
     }
 
-    @GetMapping("api/produto/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<Produto> show(@PathVariable String id) {
         log.info("Buscar produto " + id);
         var produtoEncontrada = repository.findById(id)
@@ -40,7 +40,7 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoEncontrada);
     }
 
-    @DeleteMapping("/api/produto/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity<Produto> delete(@PathVariable String id) {
         var produtoEncontrada = repository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possivel deletar o produto"));
@@ -48,12 +48,12 @@ public class ProdutoController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/api/produto/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Produto> update(@PathVariable String id, @RequestBody Produto produto) {
-        var produtoEncontrada = repository.findById(id)
+        repository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Código não Encontrado"));
         produto.setId(id);
-        repository.save(produtoEncontrada);
+        repository.save(produto);
         return ResponseEntity.ok(produto);
     }
 }
