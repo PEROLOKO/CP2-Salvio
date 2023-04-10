@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -31,4 +32,28 @@ public class ProdutoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(produto);
     }
 
+    @GetMapping("api/produto/{id}")
+    public ResponseEntity<Produto> show(@PathVariable String id) {
+        log.info("Buscar produto " + id);
+        var produtoEncontrada = repository.findById(id)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não Encontrado"));
+        return ResponseEntity.ok(produtoEncontrada);
+    }
+
+    @DeleteMapping("/api/produto/{id}")
+    public ResponseEntity<Produto> delete(@PathVariable String id) {
+        var produtoEncontrada = repository.findById(id)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possivel deletar o produto"));
+        repository.delete(produtoEncontrada);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/api/produto/{id}")
+    public ResponseEntity<Produto> update(@PathVariable String id, @RequestBody Produto produto) {
+        var produtoEncontrada = repository.findById(id)
+                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Código não Encontrado"));
+        produto.setId(id);
+        repository.save(produtoEncontrada);
+        return ResponseEntity.ok(produto);
+    }
 }
