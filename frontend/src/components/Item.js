@@ -25,10 +25,10 @@ import touca from "../img/touca.png";
 import axios from "axios";
 
 const Item = props => {
-    const {item} = props;
+    const { item } = props;
     var img = null;
 
-    switch(item.tipo) {
+    switch (item.tipo) {
         case "bermuda":
             img = bermuda;
             break;
@@ -108,7 +108,9 @@ const Item = props => {
             <h3>{item.nome}</h3>
             <h2>R${item.preco}</h2>
             <p>{item.desc}</p>
-            <input type="button" value="delete" onClick={handleDelete}/>
+            <div className="buttons">
+                <input className="button" type="button" value="X" onClick={handleDelete} />
+            </div>
         </div>
     )
 }

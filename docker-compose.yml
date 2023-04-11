@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  api:
+    build: ./style-exclusive
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - spring_data_mongodb_host=mongo_db
+      - spring_data_mongodb_port=27017
+      - spring_data_mongodb_database=styleexclusive
+      - spring_jpa_hibernate_ddl-auto=create
+    depends_on:
+      - mongo_db
+  mongo_db:
+    image: "mongo:4.4.3"
+    restart: always
+    ports:
+      - 27017:27017
+  front:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    environment:
+      - REACT_APP_BACKEND_SERVER_URL=api
+    depends_on:
+      - api

@@ -1,0 +1,5 @@
+br\com\fiap\styleexclusive\config\DatabaseSeeder.class
+br\com\fiap\styleexclusive\model\Produto.class
+br\com\fiap\styleexclusive\repository\ProdutoRepository.class
+br\com\fiap\styleexclusive\controller\ProdutoController.class
+br\com\fiap\styleexclusive\Main.class

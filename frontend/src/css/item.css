@@ -13,3 +13,21 @@
     height: 100%;
     object-fit: cover;
 }
+
+.buttons {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.button {
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    color: white;
+    background-color: red;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #FF5555;
+}
