@@ -18,8 +18,8 @@ public class DatabaseSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         produtoRepository.deleteAll();
         produtoRepository.saveAll(List.of(
-                new Produto("Blusa Azul e Legal", "blusa", 69.99F, "uma blusa bem bonita"),
-                new Produto("Calça Vermelho", "calça", 70F, "uma calça bem legal"),
+                new Produto("Camisa Azul e Legal", "camisa", 69.99F, "uma camisa bem bonita"),
+                new Produto("Calça Jeans", "calca_jeans", 70F, "uma calça bem legal"),
                 new Produto("Shorts", "shorts", 99.99F, "um shorts")
         ));
     }

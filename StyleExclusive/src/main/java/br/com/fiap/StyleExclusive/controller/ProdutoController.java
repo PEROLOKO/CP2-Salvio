@@ -23,9 +23,11 @@ public class ProdutoController {
     ProdutoRepository repository;
 
     @GetMapping
+    @CrossOrigin
     public List<Produto> index() { return repository.findAll(); }
 
     @PostMapping
+    @CrossOrigin
     public ResponseEntity<Produto> create(@RequestBody Produto produto) {
         log.info("Cadastrando produto " + produto);
         repository.save(produto);
@@ -41,6 +43,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("{id}")
+    @CrossOrigin
     public ResponseEntity<Produto> delete(@PathVariable String id) {
         var produtoEncontrada = repository.findById(id)
                 .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possivel deletar o produto"));
