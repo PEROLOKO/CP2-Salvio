@@ -1,0 +1,19 @@
+# Integrantes do Grupo:
+Enzo Perazolo RM95657
+Giovanna Sousa RM94767
+Henry Kinoshita RM93443
+Luiz Felipe RM94538
+Matheus Felipe RM93772
+Victor Mendes RM92843
+
+# Clonar o repositório
+git clone https://github.com/PEROLOKO/CP2-Salvio.git
+
+# Criar o container com o docker compose
+docker-compose up -d --build
+
+# Requisição HTTP que retorna todos os produtos no banco
+método GET : localhost:8080/api/produto
+
+# URL do site React
+localhost:3000 ou 127.0.0.1:3000
